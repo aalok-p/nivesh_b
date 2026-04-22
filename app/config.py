@@ -1,8 +1,8 @@
 from functools import lru_cache
-from typing import List
+from pydantic import BaseModel
 import os
 
-class Settings:
+class Settings(BaseModel):
     app_name: str ="Nivesh.ai"
     app_host: str = os.getenv("APP_HOST", "0.0.0.0")
     app_port: int = int(os.getenv("APP_PORT", "8000"))
