@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from time import perf_counter
 
-from .schemas import Breakdown, PreQualRequest, PreQualResponse, RouteOption
-from .services import BlostemRatesClient
+from schemas import Breakdown, PreQualRequest, PreQualResponse, RouteOption
+from services import BlostemRatesClient
 
 
 @dataclass
