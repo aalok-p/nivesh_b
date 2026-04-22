@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import httpx
-from config import Settings
-from schemas import FDInput
+from app.config import Settings
+from app.schemas import FDInput
 
 
 @dataclass

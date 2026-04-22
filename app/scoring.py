@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from time import perf_counter
 
-from schemas import Breakdown, PreQualRequest, PreQualResponse, RouteOption
-from services import BlostemRatesClient
+from app.schemas import Breakdown, PreQualRequest, PreQualResponse, RouteOption
+from app.services import BlostemRatesClient
 
 
 @dataclass
@@ -82,7 +82,7 @@ class LoanReadinessEngine:
                 tenure_quality=tenure_quality,
                 kyc_readiness=kyc_readiness,
             ),
-            routes=self._route_options(),
+            routes=self.route_options(),
             processing_ms=int((ended - started) * 1000),
             source_mode=source_mode,
         )

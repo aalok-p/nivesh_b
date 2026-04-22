@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from config import get_settings
-from schemas import FDInput, PreQualRequest, PreQualResponse, SimulateRequest, SimulateResponse
-from scoring import LoanReadinessEngine
-from services import BlostemRatesClient
+from app.config import get_settings
+from app.schemas import FDInput, PreQualRequest, PreQualResponse, SimulateRequest, SimulateResponse
+from app.scoring import LoanReadinessEngine
+from app.services import BlostemRatesClient
 
 
 settings= get_settings()
@@ -14,9 +14,9 @@ rates_client = BlostemRatesClient(settings=settings)
 engine = LoanReadinessEngine(rates_client=rates_client)
 
 
-@app.get("/health", response_model="str")
+@app.get("/health", response_model=str)
 async def health() ->str:
-    return str(status="ok")
+    return "ok"
 
 @app.post("/api/v1/prequal", response_model=PreQualResponse)
 async def prequal(payload: PreQualRequest) -> PreQualResponse:
